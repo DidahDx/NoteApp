@@ -37,7 +37,8 @@
             android:id="@+id/text_view_descrption"
             android:layout_below="@id/text_view_title"
             tools:text="Descrptiom"
-
+            android:maxLines="1"
+            android:ellipsize="end"
             />
     </RelativeLayout>
 
