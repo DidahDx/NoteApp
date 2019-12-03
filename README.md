@@ -1,1 +1,2 @@
 # NoteApp
+Note taking application 
