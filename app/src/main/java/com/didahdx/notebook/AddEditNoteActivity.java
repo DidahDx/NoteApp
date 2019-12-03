@@ -41,10 +41,13 @@ public class AddEditNoteActivity extends AppCompatActivity {
                 editTextTitle.setText(intent.getStringExtra(EXTRA_TITLE));
                 editTextDescrption.setText(intent.getStringExtra(EXTRA_DESCRIPTION));
                 numberPicker.setValue(intent.getIntExtra(EXTRA_PRIORITY, 1));
+            }else {
+                setTitle("Add Note");
             }
 
-        } else {
+        }
 
+        if (getIntent()==null){
             setTitle("Add Note");
         }
     }
