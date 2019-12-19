@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        //used to handle delete on swipe
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }).attachToRecyclerView(recyclerView);
 
+
         noteAdapter.setOnItemClickListener(new NoteAdapter.onItemClickListener() {
             @Override
             public void onItemClick(Note note) {
@@ -81,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    //collect the ids
     private void FindIds() {
         recyclerView = findViewById(R.id.recycler_view);
         floatingActionButton = (FloatingActionButton) findViewById(R.id.button_add_note);
@@ -98,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        //used to insert a new note
         if (requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK  && data!= null) {
 
             String title = data.getStringExtra(AddEditNoteActivity.EXTRA_TITLE);
@@ -107,7 +111,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             noteViewModel.insert(new Note(title, description, priority));
 
             Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show();
-        } else if (requestCode == EDIT_NOTE_REQUEST && resultCode == RESULT_OK && data!= null) {
+        }
+        //used to update notes
+        else if (requestCode == EDIT_NOTE_REQUEST && resultCode == RESULT_OK && data!= null) {
 
 
             int id=data.getIntExtra(AddEditNoteActivity.EXTRA_ID,-1);

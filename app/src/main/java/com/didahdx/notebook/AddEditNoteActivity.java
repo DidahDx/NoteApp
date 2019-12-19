@@ -36,6 +36,7 @@ public class AddEditNoteActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         if (getIntent() != null) {
             Intent intent = getIntent();
+
             if (intent.hasExtra(EXTRA_ID)) {
                 setTitle("Edit Note");
                 editTextTitle.setText(intent.getStringExtra(EXTRA_TITLE));
@@ -44,7 +45,6 @@ public class AddEditNoteActivity extends AppCompatActivity {
             }else {
                 setTitle("Add Note");
             }
-
         }
 
         if (getIntent()==null){
@@ -82,11 +82,13 @@ public class AddEditNoteActivity extends AppCompatActivity {
         String description = editTextDescrption.getText().toString().trim();
         int priority = numberPicker.getValue();
 
+        //used to insert a new note
         if (title.isEmpty() || description.isEmpty()) {
             Toast.makeText(this, "Insert a title and description", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        //used to update
         Intent data = new Intent();
         data.putExtra(EXTRA_TITLE, title);
         data.putExtra(EXTRA_DESCRIPTION, description);
