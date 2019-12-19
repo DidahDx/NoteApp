@@ -72,8 +72,7 @@ public class NoteAdapter extends ListAdapter<Note,NoteAdapter.NoteViewHolder> {
         }
     }
 
-
-
+    //returns the note at a specific position
     public Note getNoteAt(int positon) {
         return getItem(positon);
     }
